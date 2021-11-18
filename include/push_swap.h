@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/18 15:46:30 by fausto           ###   ########.fr       */
+/*   Updated: 2021/11/18 19:00:25 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@ int	init_stack(t_game *game, int argc);
 int	exit_ps(t_game *game);
 
 int	cmd_sa(t_game *game);
+
+int	cmd_ra(t_game *game);
 
 #endif

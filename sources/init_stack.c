@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/18 14:45:57 by fausto           ###   ########.fr       */
+/*   Updated: 2021/11/18 19:17:29 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ static t_stack	*ps_lstnew(int *content)
 	n_elem->next = NULL;
 	return (n_elem);
 }
-
+/*
 static t_stack	*ps_print_lst(t_stack *stack)
 {
-	printf("\nprint_lst\n");
+	printf("\n\n");
 	if (!stack)
 		return (NULL);
 	while (stack->next != NULL)
@@ -63,13 +63,18 @@ static t_stack	*ps_print_lst(t_stack *stack)
 		printf("      stack->next %p\n ", stack->next);
 		stack = stack->next;
 	}
-	return (stack);
+	printf("stack %p -> ", stack);
+	printf("stack->content %d\n ", *stack->content);
+	printf("      stack->previous %p -> ", stack->previous);
+	printf("      stack->next %p\n ", stack->next);
+	return (NULL);
 }
-
+*/
 int	init_stack(t_game *game, int argc)
 {
 	t_stack	*temp;
-	int		i;
+
+	int	i;
 
 	i = 0;
 	while (i < argc - 1)
@@ -78,9 +83,7 @@ int	init_stack(t_game *game, int argc)
 		ps_lstadd_back(&game->stack_a, temp);
 		i++;
 	}
-	ps_print_lst(game->stack_a);
-	cmd_sa(game);
-	printf("After cmd\n");
-	ps_print_lst(game->stack_a);
+	
+	//ps_print_lst(game->stack_a);
 	return (0);
 }

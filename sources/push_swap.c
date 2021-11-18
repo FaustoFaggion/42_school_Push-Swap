@@ -6,7 +6,7 @@
 /*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:22:39 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/18 14:44:55 by fausto           ###   ########.fr       */
+/*   Updated: 2021/11/18 19:34:07 by fausto           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ int	main(int argc, char *argv[])
 		exit_ps(&game);
 		return (0);
 	}
+	cmd_sa(&game);
+	cmd_ra(&game);
 }
