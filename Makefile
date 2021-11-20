@@ -79,6 +79,8 @@ run1:
 	make && ./push_swap 0 1 2 3 4 5 6 7 8 9 
 run2:
 	make && ./push_swap 3 8 7 4 2 9 0 6 1 5
+run3:
+	make && ./push_swap 3 18 7 4 12 9 10 6 16 1 0 13 5 11 17 2 14 19 8 15
 #run_bonus:
 #	make && ./pipex file1.txt "tr a b" "tr e c" file2.txt
 

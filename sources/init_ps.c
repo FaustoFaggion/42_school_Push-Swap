@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/20 11:14:20 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/20 14:21:01 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static int	check_dup(t_game *game, int argc)
 		{
 			if (game->args[i] == game->args[j])
 			{	
-				write(2, "Number duplicated\n", 18);
+				write(2, "Number duplicated - ",20);
 				return (1);
 			}
 			j++;
