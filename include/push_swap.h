@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/20 11:51:03 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:00:07 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ int		cmd_rb(t_game *game);
 int		cmd_rrb(t_game *game);
 
 int		cmd_pa(t_game *game);
+
+int	cmd_ss(t_game *game);
+
+int	cmd_rr(t_game *game);
+
+int	cmd_rrr(t_game *game);
 
 int		solution_ps(t_game *t_game);
 

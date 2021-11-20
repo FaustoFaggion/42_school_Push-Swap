@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/20 14:08:57 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/20 20:28:09 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,20 @@ static	int	check(t_game *game)
 	}
 	return (1);
 }
-
+/*
+static int	stop_stack_a(t_game *game)
+{
+	t_stack *temp;
+	
+	while (game->stack_a->next != NULL)
+	{
+		temp = game->stack_a->next;
+		if (game->stack_a->content > temp->content)
+			return (1);
+	}
+	return (0);
+}
+*/
 int	solution_ps(t_game *game)
 {
 	int	flag;
@@ -50,15 +63,21 @@ int	solution_ps(t_game *game)
 				if (*game->stack_a->content > *game->botton_a->content)
 				{
 					printf("1");
+				//	if(stop_stack_a(game) == 0)
+				//		break ;
 					cmd_ra(game);
 					steps++;
 				}
 				else
 				{
 					printf("2");
+				//	if(stop_stack_a(game) == 0)
+				//		break ;
 					cmd_sa(game);
 					steps++;
 					cmd_pb(game);
+				//	if(stop_stack_a(game) == 0)
+				//		break ;
 					steps++;
 					flag ++;
 				}
@@ -66,6 +85,8 @@ int	solution_ps(t_game *game)
 			else
 			{
 				printf("3");
+			//	if(stop_stack_a(game) == 0)
+			//			break ;
 				cmd_pb(game);
 				steps++;
 				flag ++;
