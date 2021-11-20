@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_ps.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/18 15:46:26 by fausto           ###   ########.fr       */
+/*   Updated: 2021/11/20 11:14:20 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ static int	init_variables(int argc, t_game *game)
 {
 	game->stack_a = NULL;
 	game->stack_b = NULL;
+	game->top_a = NULL;
+	game->botton_a = NULL;
+	game->top_b = NULL;
+	game->botton_b = NULL;
 	game->args = NULL;
 	game->args = malloc(sizeof(int) * (argc - 1));
-	if (!game->args)
+	if (game->args == NULL)
 	{
 		write(2, "malloc error game->stack_a\n", 27);
 		return (1);
@@ -70,16 +74,16 @@ static int	parse_args(int argc, char *argv[], t_game *game)
 	return (0);
 }
 
-static int	check_dup(t_game *game)
+static int	check_dup(t_game *game, int argc)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (game->args[i])
+	while (i < argc - 1)
 	{
 		j = i + 1;
-		while (game->args[j])
+		while (j < argc - 1)
 		{
 			if (game->args[i] == game->args[j])
 			{	
@@ -101,7 +105,7 @@ int	init_ps(int argc, char *argv[], t_game *game)
 		return (1);
 	if (parse_args(argc, argv, game) == 1)
 		return (1);
-	if (check_dup(game) == 1)
+	if (check_dup(game, argc) == 1)
 		return (1);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/18 19:17:29 by fausto           ###   ########.fr       */
+/*   Updated: 2021/11/20 11:50:10 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_stack	*ps_lstlast(t_stack *stack)
 	return (stack);
 }
 
-void	ps_lstadd_back(t_stack **stack, t_stack *new)
+static void	ps_lstadd_back(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
@@ -80,10 +80,15 @@ int	init_stack(t_game *game, int argc)
 	while (i < argc - 1)
 	{
 		temp = ps_lstnew(&game->args[i]);
+		if (temp == NULL)
+			return (1);
 		ps_lstadd_back(&game->stack_a, temp);
 		i++;
 	}
-	
+	game->top_a = game->stack_a;
+	game->botton_a = ps_lstlast(game->stack_a);
+	printf("top stack A %d\n", *game->top_a->content);
+	printf("botton stack A %d\n", *game->botton_a->content);
 	//ps_print_lst(game->stack_a);
 	return (0);
 }

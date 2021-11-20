@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fausto <fausto@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:22:39 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/18 19:34:07 by fausto           ###   ########.fr       */
+/*   Updated: 2021/11/20 11:18:36 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char *argv[])
 		exit_ps(&game);
 		return (0);
 	}
-	cmd_sa(&game);
-	cmd_ra(&game);
+	solution_ps(&game);
+	exit_ps(&game);
+	return (0);	
 }
