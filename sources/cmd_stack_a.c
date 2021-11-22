@@ -23,6 +23,10 @@ int	cmd_sa(t_game *game)
 	write(1, "sa\n", 3);
 	game->top_a = game->stack_a;
 	game->botton_a = ps_lstlast(game->stack_a);
+	printf("top A %d - ", *game->top_a->content);
+	printf("botton A %d \n", *game->botton_a->content);
+	printf("top pos A %d - ", *game->top_a->pos);
+	printf("botton pos A %d \n", *game->botton_a->pos);
 	return (0);
 }
 
@@ -113,6 +117,8 @@ int	cmd_pb(t_game *game)
 		game->top_a = game->stack_a;
 		game->botton_a = ps_lstlast(game->stack_a);
 	}
+	*game->size_a = *game->size_a - 1;
+	*game->size_b = *game->size_b + 1;
 	return (0);
 }
 /*

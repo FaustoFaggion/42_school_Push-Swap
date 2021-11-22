@@ -18,7 +18,7 @@ SRC_FILES		=	push_swap.c \
 					cmd_stack_a.c \
 					cmd_stack_b.c \
 					cmd_stack_dup.c \
-					solution_ps.c
+					solution_ps2.c
 
 SRC				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 
@@ -75,13 +75,13 @@ fclean: clean
 re: fclean all
 
 run:
-	make && ./push_swap 9 8 7 6 5 4 3 2 1 0
+	make && ./push_swap 4 2 3 9 6 5 7 0 8
 run1:
 	make && ./push_swap 0 1 2 3 4 5 6 7 8 9 
 run2:
 	make && ./push_swap 3 8 7 4 2 9 0 6 1 5
 run3:
-	make && ./push_swap 3 18 7 4 12 9 10 6 16 1 0 13 5 11 17 2 14 19 8 15
+	make && ./push_swap 18 3 7 4 12 9 10 6 16 1 0 13 5 11 17 2 14 19 8 15
 #run_bonus:
 #	make && ./pipex file1.txt "tr a b" "tr e c" file2.txt
 

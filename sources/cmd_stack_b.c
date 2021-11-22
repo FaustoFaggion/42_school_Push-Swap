@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:48:42 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/20 19:37:21 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/22 14:17:08 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ int	cmd_pa(t_game *game)
 		game->top_b = game->stack_b;
 		game->botton_b = ps_lstlast(game->stack_b);
 	}
+	*game->size_b = *game->size_b - 1;
+	*game->size_a = *game->size_a + 1;
 	return (0);
 }
 
