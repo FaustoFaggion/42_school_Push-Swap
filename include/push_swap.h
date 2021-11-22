@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/20 20:00:07 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:24:26 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 typedef struct s_stack
 {
+	int		*pos;
 	int		*content;
 	void	*previous;
 	void	*next;
@@ -24,14 +25,17 @@ typedef struct s_stack
 
 typedef struct s_game
 {
+	int		*args;
+	int		*size;
+	int		*sequence;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	t_stack	*top_a;
+	int		*size_a;
 	t_stack	*botton_a;
 	t_stack	*top_b;
 	t_stack	*botton_b;
-	int		*args;
-	
+	int		*size_b;
 }		t_game;
 
 # define INT_MAX	2147483647
@@ -61,11 +65,11 @@ int		cmd_rrb(t_game *game);
 
 int		cmd_pa(t_game *game);
 
-int	cmd_ss(t_game *game);
+int		cmd_ss(t_game *game);
 
-int	cmd_rr(t_game *game);
+int		cmd_rr(t_game *game);
 
-int	cmd_rrr(t_game *game);
+int		cmd_rrr(t_game *game);
 
 int		solution_ps(t_game *t_game);
 

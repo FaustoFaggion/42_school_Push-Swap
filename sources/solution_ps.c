@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/20 20:28:09 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/22 12:26:05 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,10 @@ static int	stop_stack_a(t_game *game)
 */
 int	solution_ps(t_game *game)
 {
-	int	flag;
+	int		flag;
 	t_stack	*temp_next;
-	int steps;
+	int		steps;
+	int		i;
 	
 	steps = 0;
 	flag = 0;
@@ -129,6 +130,15 @@ int	solution_ps(t_game *game)
 		steps++;
 		flag = check(game);
 	}
-	printf("\n\nsteps : %d", steps);
+	printf("\n\nsteps : %d - ", steps);
+	printf("size: %d - ", *game->size);
+	printf("size A: %d - ", *game->size_a);
+	printf("size B: %d\n\n", *game->size_b);
+	i = 0;
+	while (i < *game->size)
+	{
+		printf("%d - ", game->sequence[i]);
+		i++;
+	}
 	return (0);
 }

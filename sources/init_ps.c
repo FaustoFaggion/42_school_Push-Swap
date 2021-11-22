@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/20 14:21:01 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/22 11:19:22 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,27 @@ static int	check_arguments(int argc, char *argv[])
 
 static int	init_variables(int argc, t_game *game)
 {
-	game->stack_a = NULL;
-	game->stack_b = NULL;
-	game->top_a = NULL;
-	game->botton_a = NULL;
-	game->top_b = NULL;
-	game->botton_b = NULL;
-	game->args = NULL;
 	game->args = malloc(sizeof(int) * (argc - 1));
 	if (game->args == NULL)
-	{
-		write(2, "malloc error game->stack_a\n", 27);
 		return (1);
-	}
+	game->sequence = malloc(sizeof(int) * (argc - 1));
+	if (game->sequence == NULL)
+		return (1);
+	game->size = (int *)malloc(sizeof(int));
+	if (game->size == NULL)
+		return (1);
+	game->stack_a = NULL;
+	game->top_a = NULL;
+	game->botton_a = NULL;
+	game->size_a = (int *)malloc(sizeof(int));
+	if (game->size_a == NULL)
+		return (1);
+	game->stack_b = NULL;
+	game->top_b = NULL;
+	game->botton_b = NULL;
+	game->size_b = (int *)malloc(sizeof(int));
+	if (game->size_b == NULL)
+		return (1);
 	return (0);
 }
 
@@ -69,8 +77,12 @@ static int	parse_args(int argc, char *argv[], t_game *game)
 			write(2, "Number > INT_MAX or < INT_MIN\n", 30);
 			return (1);
 		}
+		game->sequence[i - 1] = i;
 		i++;
 	}
+	*game->size = i - 1;
+	*game->size_a = *game->size;
+	*game->size_b = 0;
 	return (0);
 }
 

@@ -89,8 +89,9 @@ run3:
 #	$(CC) $(CFLAGS) $(FS) $(OBJ) $(LIBFT) -o $(NAME) $(I_PIPEX) $(I_LIBFT)
 #	./pipex file1.txt "tr a b" "tr e c" file2.txt
 
-#valgrind:
-#	make && valgrind ./pipex file1.txt "tr a b" "tr e c" file2.txt
+valgrind:
+	make re
+	valgrind ./push_swap 9 8 7 6 5 4 3 2 1 0
 
 #valgrind_bonus: $(NAME_BONUS)
 #	valgrind --leak-check=full --show-leak-kinds=all ./pipex file1.txt "tr a b" "tr e c" file2.txt
