@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/22 20:05:13 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/22 21:44:54 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	check_stack_a(t_game *game)
 	t_stack	*temp;
 	t_stack	*next;
 	
-	printf("check_stack_a");
+	printf("check_stack_a\n");
 	if (game->size_a == NULL)
 		return (1);
 	if (game->stack_a->next == NULL)
@@ -51,7 +51,7 @@ static int	check_stack_a(t_game *game)
 	next = game->stack_a->next;
 	while(*next->content > *temp->content)
 	{
-		if (temp == NULL)
+		if (next->next == NULL)
 				return (1);
 		temp = next;
 		next = temp->next;
@@ -96,7 +96,7 @@ static void	check_top_next(t_game *game)
 			next_b = game->stack_b->next;
 			if (*game->stack_b->content < *next_b->content)
 			{
-				printf("top > next stack && top b < next b\n");
+				printf("top > next stack && top b < next b linha 99\n");
 				cmd_ss(game);
 			}
 			else
@@ -280,7 +280,8 @@ int	solution_ps2(t_game *game)
 		while (check_stack_a(game) != 1)
 		{
 			check_top_next(game);
-			check_top_pos(game);
+			if (check_stack_a(game) != 1)
+				check_top_pos(game);
 		}
 		flag++;
 		printf("\n\nflag : %d - ", flag);
