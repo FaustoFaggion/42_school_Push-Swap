@@ -105,6 +105,7 @@ int	cmd_pb(t_game *game)
 	game->stack_b = swap;
 	game->stack_b->next = temp;
 	game->stack_b->previous = NULL;
+	game->botton_b = ps_lstlast(game->stack_b);
 	if (temp != NULL)
 		temp->previous = game->stack_b;
 	write(1, "pb\n", 3);

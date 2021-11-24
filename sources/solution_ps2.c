@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/22 21:44:54 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/22 23:53:36 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,94 @@ static int	check_stack_a(t_game *game)
 	t_stack	*next;
 	
 	printf("check_stack_a\n");
+	if (game->stack_a == NULL)
+		return (1);
+	if (game->stack_a->next == NULL)
+		return (1);
+	temp = game->stack_a;
+	next = game->stack_a->next;
+	while(*next->content > *temp->content)
+	{
+		if (next->next == NULL)
+				return (1);
+		temp = next;
+		next = temp->next;
+	}
+	return (0);
+}
+
+static int	check_stack_b(t_game *game)
+{
+	t_stack	*temp;
+	t_stack	*next;
+	
+	printf("check_stack_b\n");
+	if (game->stack_b == NULL)
+		return (1);
+	if (game->stack_a->next == NULL)
+		return (1);
+
+	// Se stack_b > stack_b && stack_a estiver desordenada
+	temp = game->stack_a;
+	next = game->stack_a->next;
+	while(*next->content > *temp->content)
+	{
+		if (next->next == NULL)
+				return (1);
+		temp = next;
+		next = temp->next;
+	}
+	return (0);
+}
+
+int	solution_ps2(t_game *game)
+{
+	int		steps;
+	int		flag;
+	int		i;
+	
+	ps_print_lst(game->stack_a);
+	
+	steps = 0;
+	flag = 0;
+	while (flag < 5)
+	{
+		while (check_stack_a(game) != 1)
+		{
+			check_top_next(game);
+			if (check_stack_a(game) != 1)
+				check_top_pos(game);
+		}
+		while (check_stack_b(game) != 1)
+		{
+			check_top_next(game);
+			if (check_stack_a(game) != 1)
+				check_top_pos(game);
+		}
+		flag++;
+		printf("\n\nflag : %d - ", flag);
+		
+	}
+	printf("\n\nsteps : %d - ", steps);
+	printf("size: %d - ", *game->size);
+	printf("size A: %d - ", *game->size_a);
+	printf("size B: %d\n\n", *game->size_b);
+	i = 0;
+	while (i < *game->size)
+	{
+		printf("%d - ", game->sequence[i]);
+		i++;
+	}
+	return (0);
+}
+	
+/*
+static int	check_stack_a(t_game *game)
+{
+	t_stack	*temp;
+	t_stack	*next;
+	
+	printf("check_stack_a\n");
 	if (game->size_a == NULL)
 		return (1);
 	if (game->stack_a->next == NULL)
@@ -59,7 +147,7 @@ static int	check_stack_a(t_game *game)
 	return (0);
 }
 
-
+*/
 /*
 static	int	check(t_game *game)
 {
@@ -83,7 +171,7 @@ static	int	check(t_game *game)
 */
 
 //Verify if stack_a > stack_a->next
-static void	check_top_next(t_game *game)
+/*static void	check_top_next(t_game *game)
 {
 	t_stack	*next_a;
 	t_stack	*next_b;
@@ -299,3 +387,4 @@ int	solution_ps2(t_game *game)
 	}
 	return (0);
 }
+*/

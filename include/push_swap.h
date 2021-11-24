@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/22 12:32:49 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:15:04 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 typedef struct s_stack
 {
 	int		*pos;
+	char	push;
+	char	next_push;
 	int		*content;
 	void	*previous;
 	void	*next;
@@ -71,6 +73,10 @@ int		cmd_rr(t_game *game);
 
 int		cmd_rrr(t_game *game);
 
-int		solution_ps2(t_game *t_game);
+int		solution_psC(t_game *t_game);
+
+//void	check_top_next(t_game *game);
+
+//void	check_top_pos(t_game *game);
 
 #endif

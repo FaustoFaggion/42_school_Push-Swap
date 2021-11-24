@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/22 11:42:36 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/24 14:04:54 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	init_stack(t_game *game, int argc)
 	}
 	game->top_a = game->stack_a;
 	game->botton_a = ps_lstlast(game->stack_a);
-
+	
 //	printf("top stack A %d\n", *game->top_a->content);
 //	printf("botton stack A %d\n", *game->botton_a->content);
 //	ps_print_lst(game->stack_a);
