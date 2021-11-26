@@ -1,2 +1,0 @@
-python3 ./push_swap_visualizer/pyviz.py `ruby -e "puts (-50..50).to_a.shuffle.join(' ')"`
-

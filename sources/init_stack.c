@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/24 14:04:54 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:56:38 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	check_pos(t_game *game, t_stack *temp)
 	
 	i = 0;
 	x = 0;
-	while (i < *game->size)
+	while (i < game->size)
 	{
 		if (game->args[i] <= *temp->content)
 			x++;
@@ -80,15 +80,11 @@ int	init_stack(t_game *game, int argc)
 		if (temp == NULL)
 			return (1);
 		check_pos(game, temp);
-//		printf("content:%d i:%d pos:%d\n", *temp->content, i, *temp->pos);
 		ps_lstadd_back(&game->stack_a, temp);
 		i++;
 	}
 	game->top_a = game->stack_a;
+	game->next_a = game->top_a->next;
 	game->botton_a = ps_lstlast(game->stack_a);
-	
-//	printf("top stack A %d\n", *game->top_a->content);
-//	printf("botton stack A %d\n", *game->botton_a->content);
-//	ps_print_lst(game->stack_a);
 	return (0);
 }

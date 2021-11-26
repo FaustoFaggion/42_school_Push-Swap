@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/24 14:15:04 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:59:02 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 typedef struct s_stack
 {
 	int		*pos;
-	char	push;
-	char	next_push;
 	int		*content;
 	void	*previous;
 	void	*next;
@@ -28,16 +26,19 @@ typedef struct s_stack
 typedef struct s_game
 {
 	int		*args;
-	int		*size;
 	int		*sequence;
+	int		size;
+	int		median;
 	t_stack	*stack_a;
-	t_stack	*stack_b;
 	t_stack	*top_a;
-	int		*size_a;
+	t_stack	*next_a;
 	t_stack	*botton_a;
+	int		size_a;
+	t_stack	*stack_b;
 	t_stack	*top_b;
+	t_stack	*next_b;
 	t_stack	*botton_b;
-	int		*size_b;
+	int		size_b;
 }		t_game;
 
 # define INT_MAX	2147483647
@@ -51,19 +52,19 @@ t_stack	*ps_lstlast(t_stack *stack);
 
 int		exit_ps(t_game *game);
 
-int		cmd_sa(t_game *game);
+int		cmd_sa(t_game *game, int i);
 
-int		cmd_ra(t_game *game);
+int		cmd_ra(t_game *game, int i);
 
-int		cmd_rra(t_game *game);
+int		cmd_rra(t_game *game, int i);
 
 int		cmd_pb(t_game *game);
 
-int		cmd_sb(t_game *game);
+int		cmd_sb(t_game *game, int i);
 
-int		cmd_rb(t_game *game);
+int		cmd_rb(t_game *game, int i);
 
-int		cmd_rrb(t_game *game);
+int		cmd_rrb(t_game *game, int i);
 
 int		cmd_pa(t_game *game);
 
@@ -73,7 +74,7 @@ int		cmd_rr(t_game *game);
 
 int		cmd_rrr(t_game *game);
 
-int		solution_psC(t_game *t_game);
+int		solution_psD(t_game *t_game);
 
 //void	check_top_next(t_game *game);
 

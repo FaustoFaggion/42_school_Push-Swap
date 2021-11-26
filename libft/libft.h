@@ -23,12 +23,9 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-# define INT_MIN -2147483648
-# define INT_MAX 2147483647
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 128
-# endif
+# define INT_MIN 		-2147483648
+# define INT_MAX 		2147483647
+# define BUFFER_SIZE	100
 
 /**
  * @brief convert string to integer. The string should contain numbers.
@@ -71,14 +68,6 @@ void	*ft_calloc(size_t nmemb, size_t size);
  * @return  The  values returned are nonzero if the character c
 			falls into the tested class, and zero if not.
 **/
-
-/**
- * @brief 	Open a txt file and return line by line from then 
- * 			when called in a loop.
- * @param 1 File Descriptor of the file
- * @return  Line by line from a file when the function is called in a loop
-**/
-
 int		ft_isalnum(int c);
 
 /**
@@ -484,24 +473,6 @@ int		ft_tolower(int c);
  * @return  a alpha uppercase character.
 **/
 int		ft_toupper(int c);
-
-void	ft_lstadd_back(t_list **lst, t_list *new);
-
-void	ft_lstadd_front(t_list **lst, t_list *new);
-
-void	ft_lstclear(t_list **lst, void (*del)(void*));
-
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
-
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-
-t_list	*ft_lstlast(t_list *lst);
-
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
-t_list	*ft_lstnew(void *content);
-
-int	ft_lstsize(t_list *lst);
 
 char	*ft_get_next_line(int fd);
 

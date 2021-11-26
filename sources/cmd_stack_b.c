@@ -6,18 +6,18 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:48:42 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/22 14:17:08 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:05:04 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there
-is only one or no elements).*/
-int	cmd_sb(t_game *game)
+/*sb : swap b - swap the first 2 elements at the top of stack b.
+		Do nothing if there is only one or no elements).*/
+int	cmd_sb(t_game *game, int i)
 {
 	t_stack	*swap;
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (game->stack_b == NULL)
 		return (0);
@@ -32,15 +32,17 @@ int	cmd_sb(t_game *game)
 	game->stack_b->previous = NULL;
 	if (temp != NULL)
 		temp->previous = swap;
-	write(1, "sb\n", 3);
+	if (i == 1)
+		write(1, "sb\n", 3);
 	game->top_b = game->stack_b;
+	game->next_b = game->top_b->next;
 	game->botton_b = ps_lstlast(game->stack_b);
 	return (0);
 }
 
-/*rb : rotate b - shift up all elements of stack b by 1. The first element becomes
-the last one.*/
-int	cmd_rb(t_game *game)
+/*rb : rotate b - shift up all elements of stack b by 1.
+		The first element becomes the last one.*/
+int	cmd_rb(t_game *game, int i)
 {
 	t_stack	*swap;
 	t_stack	*temp;
@@ -58,15 +60,17 @@ int	cmd_rb(t_game *game)
 	swap->previous = temp;
 	swap->next = NULL;
 	temp->next = swap;
-	write(1, "rb\n", 3);
+	if (i == 1)
+		write(1, "rb\n", 3);
 	game->top_b = game->stack_b;
+	game->next_b = game->top_b->next;
 	game->botton_b = ps_lstlast(game->stack_b);
 	return (0);
 }
 
-/*rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
-becomes the first one.*/
-int	cmd_rrb(t_game *game)
+/*rrb : reverse rotate b - shift down all elements of stack b by 1.
+		The last element becomes the first one.*/
+int	cmd_rrb(t_game *game, int i)
 {
 	t_stack	*swap;
 	t_stack	*temp;
@@ -83,14 +87,34 @@ int	cmd_rrb(t_game *game)
 	temp->next = NULL;
 	game->stack_b->previous = NULL;
 	swap->previous = game->stack_b;
-	write(1, "rrb\n", 3);
+	if (i == 1)
+		write(1, "rrb\n", 3);
 	game->top_b = game->stack_b;
+	game->next_b = game->top_b->next;
 	game->botton_b = ps_lstlast(game->stack_b);
 	return (0);
 }
 
-/*pa : push a - take the first element at the top of b and put it at the top of a. Do
-nothing if b is empty.*/
+static void	fill_game(t_game *game)
+{
+	write(1, "pa\n", 3);
+	if (game->stack_b != NULL)
+	{
+		game->top_b = game->stack_b;
+		game->botton_b = ps_lstlast(game->stack_b);
+	}
+	if (game->stack_a != NULL)
+	{
+		game->top_a = game->stack_a;
+		game->next_a = game->stack_a->next;
+		game->botton_a = ps_lstlast(game->stack_a);
+	}
+	game->size_b = game->size_b - 1;
+	game->size_a = game->size_a + 1;
+}
+
+/*pa : push a - take the first element at the top of b and put it at
+		the top of a. Do nothing if b is empty.*/
 int	cmd_pa(t_game *game)
 {
 	t_stack	*swap;
@@ -116,14 +140,7 @@ int	cmd_pa(t_game *game)
 	game->stack_a->previous = NULL;
 	if (temp != NULL)
 		temp->previous = game->stack_a;
-	write(1, "pa\n", 3);
-	if (game->stack_b != NULL)
-	{
-		game->top_b = game->stack_b;
-		game->botton_b = ps_lstlast(game->stack_b);
-	}
-	*game->size_b = *game->size_b - 1;
-	*game->size_a = *game->size_a + 1;
+	fill_game(game);
 	return (0);
 }
 
@@ -153,8 +170,8 @@ static t_stack	*ps_print_lst(t_stack *stack)
 	return (NULL);
 }
 */
-/*sb : swap b - swap the first 2 elements at the top of stack b. Do nothing if there
-is only one or no elements).
+/*sb : swap b - swap the first 2 elements at the top of stack b.
+		Do nothing if there is only one or no elements).
 int	cmd_sb(t_game *game)
 {
 	t_stack	*swap;
@@ -203,8 +220,8 @@ int	cmd_sb(t_game *game)
 	return (0);
 }
 */
-/*rb : rotate b - shift up all elements of stack b by 1. The first element becomes
-the last one.
+/*rb : rotate b - shift up all elements of stack b by 1.
+		The first element becomes the last one.
 int	cmd_rb(t_game *game)
 {
 	t_stack	*swap;
@@ -253,8 +270,8 @@ int	cmd_rb(t_game *game)
 	return (0);
 }
 */
-/*rrb : reverse rotate b - shift down all elements of stack b by 1. The last element
-becomes the first one.
+/*rrb : reverse rotate b - shift down all elements of stack b by 1.]
+		The last element becomes the first one.
 int	cmd_rrb(t_game *game)
 {
 	t_stack	*swap;
@@ -302,8 +319,8 @@ if (game->stack_b == NULL)
 	return (0);
 }
 */
-/*pa : push a - take the first element at the top of b and put it at the top of a. Do
-nothing if b is empty.
+/*pa : push a - take the first element at the top of b and put it at
+		the top of a. Do nothing if b is empty.
 int	cmd_pa(t_game *game)
 {
 	t_stack	*swap;
