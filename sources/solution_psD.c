@@ -6,12 +6,12 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/26 18:44:59 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:37:29 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
+
 static void	print_stack(t_game *game)
 {
 	t_stack	*temp_a;
@@ -36,7 +36,7 @@ static void	print_stack(t_game *game)
 	}
 	printf("\n");
 }
-*/
+
 static void	check_sa(t_game *game)
 {
 	if (game->stack_b != NULL)
@@ -117,48 +117,92 @@ static	int	check_median(t_game *game, int i)
 	return (1);
 }
 
+static	int	check_median_b(t_game *game, int i)
+{
+	if ((game->size) - (game->median / i) < game->size_b)
+		return (0);
+	return (1);
+}
+/*
+static	int	check_stack_b(t_game *game)
+{
+	t_stack *temp;
+	t_stack *temp_next;
+	if (game->stack_b == NULL)
+		return (1);
+	temp = game->stack_b;
+	temp_next = game->stack_b->next;
+	while (temp->next != NULL)
+	{
+		if (*temp->pos != (*temp_next->pos + 1))
+			return (0);//not ok
+		temp = temp_next;
+		temp_next = temp_next->next;
+	}
+	return (1); //ok
+}
+*/
 int	solution_psD(t_game *game)
 {
-//	int count;
 	int	i;
 
 	i = 1;
-//	count = 0;
-while (check_stack_a(game) != 1)
-{
-	while (check_median(game, i) != 1 && check_stack_a(game) != 1)
+	while (check_stack_a(game) != 1)
 	{
-		if (*game->botton_a->pos <= (game->size - (game->median / i)))
-			check_rra(game);
-		else if (*game->next_a->pos <= (game->size - (game->median / i)))
+		while (check_median(game, i) != 1 && check_stack_a(game) != 1)
 		{
-			if (*game->top_a->pos <= (game->size - (game->median / i)))
+			if (*game->botton_a->pos <= (game->size - (game->median / i)))
+				check_rra(game);
+			else if (*game->next_a->pos <= (game->size - (game->median / i)))
 			{
-				if (game->top_a->pos < game->next_a->pos)
+				if (*game->top_a->pos <= (game->size - (game->median / i)))
+				{
+					if (game->top_a->pos < game->next_a->pos)
+						cmd_pb(game);
+					else
+						check_sa(game);
+				}
+				else
+				{
+					check_ra(game);
+				}
+			}
+			else if (*game->next_a->pos > (game->size - (game->median / i)))
+			{	
+				if (*game->top_a->pos <= (game->size - (game->median / i)))
 					cmd_pb(game);
 				else
-					check_sa(game);
+					check_ra(game);
 			}
-			else
-			{
-				check_ra(game);
-			}
-		}
-		else if (*game->next_a->pos > (game->size - (game->median / i)))
-		{	
-			if (*game->top_a->pos <= (game->size - (game->median / i)))
-				cmd_pb(game);
-			else
-				check_ra(game);
-		}
 //		printf("median %d\n", (game->size - (game->median / i)));
 //		printf("top pos %d\n", *game->top_a->pos);
 //		printf("size a %d\n", game->size_a);		
 //		print_stack(game);
 //		count++;
+		}
+		i++;
 	}
-	i++;
-}
+	
+//	while (game->stack_b != NULL)
+	while (i > 1)
+	{
+//		while (check_stack_b(game) != 1) //not organized
+//		{
+			while (check_median_b(game, i) != 1)
+			{
+				cmd_pa(game);
+				printf("size_b %d\n", game->size_b);
+				printf("size %d\n", game->size);
+				printf("i %d\n", i);
+				printf("median %d\n", game->median);
+				printf("median / i %d\n", (game->median / i));
+				printf("size - median / i %d\n", (game->size) - (game->median / i));
+				print_stack(game);
+			}
+			
+//		}
+		i--;
+	}
 //	printf("count %d", count);
 	return (1);
 }
