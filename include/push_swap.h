@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/26 17:59:02 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/28 19:34:49 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libft.h"
 # include <stdio.h>
+
+# define DEBUG 0
 typedef struct s_stack
 {
 	int		*pos;
@@ -29,6 +31,7 @@ typedef struct s_game
 	int		*sequence;
 	int		size;
 	int		median;
+	int		index;
 	t_stack	*stack_a;
 	t_stack	*top_a;
 	t_stack	*next_a;
@@ -76,7 +79,9 @@ int		cmd_rrr(t_game *game);
 
 int		solution_psD(t_game *t_game);
 
-//void	check_top_next(t_game *game);
+void	debug(t_game *game);
+
+void	print_stack(t_game *game);
 
 //void	check_top_pos(t_game *game);
 

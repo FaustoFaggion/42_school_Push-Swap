@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:48:42 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/25 19:05:04 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/28 17:07:49 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	cmd_rrb(t_game *game, int i)
 	game->stack_b->previous = NULL;
 	swap->previous = game->stack_b;
 	if (i == 1)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	game->top_b = game->stack_b;
 	game->next_b = game->top_b->next;
 	game->botton_b = ps_lstlast(game->stack_b);
@@ -101,6 +101,7 @@ static void	fill_game(t_game *game)
 	if (game->stack_b != NULL)
 	{
 		game->top_b = game->stack_b;
+		game->next_b = game->top_b->next;
 		game->botton_b = ps_lstlast(game->stack_b);
 	}
 	if (game->stack_a != NULL)
