@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/28 19:55:54 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/28 21:02:14 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@ static void	check_rrb(t_game *game)
 */
 static	int	check_median_b(t_game *game)
 {
-	if ((game->size) - (game->size / game->index) < game->size_b)
-		return (0);
+		if ((game->size) - (game->size / game->index) < game->size_b)
+			return (0);
 	return (1);
 }
 
@@ -185,15 +185,26 @@ static void run_b(t_game *game)
 					cmd_pa(game);
 				else
 				{
-					if (game->top_a->pos == game->botton_b->pos + 1)
-						cmd_rrb(game, 1);
-					else
+					if (game->stack_b->next != NULL)
 					{
-						if (game->top_a->pos == game->next_b->pos + 1)
-							cmd_sb(game, 1);
+						if (game->top_b->pos < game->botton_b->pos)
+						{
+							cmd_rrb(game, 1);
+							cmd_pa(game);
+						}
 						else
-							cmd_rb(game, 1);
+						{
+							if (game->top_a->pos == game->next_b->pos + 1)
+								cmd_sb(game, 1);
+							else
+								if (game->botton_b->pos < game->top_b->pos)
+									cmd_rb(game, 1);
+								else
+									cmd_pa(game);
+						}
 					}
+					else
+						cmd_pa(game);
 				}
 				if (DEBUG)
 					print_stack(game);
