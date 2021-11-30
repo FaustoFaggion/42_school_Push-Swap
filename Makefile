@@ -18,7 +18,7 @@ SRC_FILES		=	push_swap.c \
 					cmd_stack_a.c \
 					cmd_stack_b.c \
 					cmd_stack_dup.c \
-					solution_psD.c \
+					solution_psE.c \
 					debug.c \
 					#solution_stack_a.c \
 

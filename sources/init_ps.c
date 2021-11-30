@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/26 16:58:10 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:30:41 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,14 @@ static int	init_variables(int argc, t_game *game)
 	game->sequence = malloc(sizeof(int) * (argc - 1));
 	if (game->sequence == NULL)
 		return (1);
-//	game->size = (int *)malloc(sizeof(int));
-//	if (game->size == NULL)
-//		return (1);
 	game->stack_a = NULL;
 	game->top_a = NULL;
 	game->next_a = NULL;
 	game->botton_a = NULL;
-//	game->size_a = (int *)malloc(sizeof(int));
-//	if (game->size_a == NULL)
-//		return (1);
 	game->stack_b = NULL;
 	game->top_b = NULL;
 	game->next_b = NULL;
 	game->botton_b = NULL;
-//	game->size_b = (int *)malloc(sizeof(int));
-//	if (game->size_b == NULL)
-//		return (1);
 	return (0);
 }
 

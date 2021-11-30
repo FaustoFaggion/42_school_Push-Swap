@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solution_psD.c                                     :+:      :+:    :+:   */
+/*   solution_psF.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/11/30 12:06:15 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:36:38 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,19 +228,25 @@ static void run_b(t_game *game)
 			}			
 }
 
-int	solution_psD(t_game *game)
+int	solution_psF(t_game *game)
 {
 	game->index = 2;
 	
 	run_a(game);
 
-	while (game->index > 0)
+	while (game->index > 1)
 	{
 		run_b(game);
 		run_a(game);
 		game->index--;
 	}
-	while (game->stack_b != NULL)
-		cmd_pa(game);
+	if (check_cut_point(game) == 0)
+	{
+		while (check_stack_a(game) != 1)
+		{
+			run_a(game);
+			run_b(game);
+		}
+	}
 	return (1);
 }

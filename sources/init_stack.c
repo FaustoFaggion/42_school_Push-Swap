@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/26 17:56:38 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/30 12:31:13 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static t_stack	*ps_lstnew(int *content)
 	n_elem->previous = NULL;
 	n_elem->next = NULL;
 	n_elem->pos = NULL;
+	n_elem->cut_point = 0;
 	return (n_elem);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/28 19:34:49 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:34:45 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@
 # include <stdio.h>
 
 # define DEBUG 0
+# define CUT_POINT 15
+
 typedef struct s_stack
 {
 	int		*pos;
+	int		cut_point;
 	int		*content;
 	void	*previous;
 	void	*next;
@@ -77,7 +80,7 @@ int		cmd_rr(t_game *game);
 
 int		cmd_rrr(t_game *game);
 
-int		solution_psD(t_game *t_game);
+int		solution_psE(t_game *t_game);
 
 void	debug(t_game *game);
 
