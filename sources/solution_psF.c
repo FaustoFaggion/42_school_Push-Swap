@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 19:27:42 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 19:34:14 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	run_a(t_game *game)
 	}
 	printf("\n######### finish run_a #########\n");
 	game->top_a->cut_point = 1;
-	game->botton_a->content = 1;
 }
 
 static void	run_b_1(t_game *game)
@@ -65,6 +64,7 @@ static void	run_b_1(t_game *game)
 	{
 		if (game->top_b->pos == 1)
 		{
+			game->top_b->cut_point = 1;
 			cmd_pa(game);
 			cmd_ra(game, 1);
 		}
@@ -78,7 +78,7 @@ static void	run_b_1(t_game *game)
 	printf("\n#####################3######### finish run_b1 #########\n");
 	game->top_a->cut_point = 1;
 }
-/*
+
 static int	check_major(t_game *game)
 {
 	t_stack *temp;
@@ -156,7 +156,7 @@ static void	to_b(t_game *game)
 	}
 	printf("\n######### finish to_b #########\n");
 }
-*/
+
 static void	cut_point(t_game *game, t_stack *stack)
 {
 	t_stack *temp;
@@ -194,13 +194,13 @@ int	solution_psF(t_game *game)
 		cut_point(game, game->stack_b);
 		run_b_1(game);
 	}
-/*	while (i < 3)
+	while (i < 6)
 	{
 		to_b(game);
 		to_a(game);
 		i++;
 	}
-	while (i < 5)
+/*	while (i < 5)
 	{
 
 		if(DEBUG != 0)
