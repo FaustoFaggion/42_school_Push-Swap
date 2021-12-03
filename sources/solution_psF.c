@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 18:52:55 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 18:54:16 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	run_a(t_game *game)
 	}
 	printf("\n######### finish run_a #########\n");
 	game->top_a->cut_point = 1;
+	game->botton_a->content = 1;
 }
 
 static void	run_b_1(t_game *game)
