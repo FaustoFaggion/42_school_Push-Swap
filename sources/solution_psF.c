@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 11:12:29 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 18:52:55 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void	run_b_1(t_game *game)
 	printf("\n#####################3######### finish run_b1 #########\n");
 	game->top_a->cut_point = 1;
 }
-
+/*
 static int	check_major(t_game *game)
 {
 	t_stack *temp;
@@ -157,32 +157,52 @@ static void	to_b(t_game *game)
 	}
 	printf("\n######### finish to_b #########\n");
 }
+*/
+static void	cut_point(t_game *game, t_stack *stack)
+{
+	t_stack *temp;
+
+	temp = stack;
+	
+	game->major = 0;
+	while (temp != NULL)
+	{
+		if (temp->pos > game->major)
+			game->major = temp->pos;
+		temp = temp->next;
+	}
+	temp = stack;
+	game->minor = game->major;
+	while (temp != NULL)
+	{
+		if (temp->pos < game->minor)
+			game->minor = temp->pos;
+		temp = temp->next;
+	}
+	game->cut_point = game->minor + ((game->major - game->minor) / 2);
+	
+}
 
 int	solution_psF(t_game *game)
 {
 	int i;
 
 	i = 0;
-	
-	game->cut_point = game->size_a - (game->size_a / 2);
+	cut_point(game, game->stack_a);
 	run_a(game);
-	game->cut_point = game->size_b - (game->size_b / 2);
-	run_b_1(game);
-	
-	
-	while (game->size_b > CUT_POINT)
+	while (game->size_b > 0)
 	{
 		game->cut_point = game->size_b - (game->size_b / 2);
 		run_b_1(game);
 		i++;
 	}
-	while (i < 5)
+/*	while (i < 5)
 	{
 		to_b(game);
 		to_a(game);
 		i++;
 	}
-/*	while (i < 5)
+	while (i < 5)
 	{
 
 		if(DEBUG != 0)

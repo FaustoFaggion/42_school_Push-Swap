@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/03 11:07:40 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 18:48:30 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_game
 	int		*args;
 	int		size;
 	int		cut_point;
+	int		minor;
+	int		major;
 	int		index;
 	t_stack	*stack_a;
 	t_stack	*top_a;
