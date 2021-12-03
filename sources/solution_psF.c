@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 20:17:29 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 20:23:45 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ static int	check_pos(t_game *game, char c)
 	if (c == 'a')
 	{
 		temp = game->stack_a;
-//		printf("check_pos top pos %d * cut point %d\n", temp->pos, game->cut_point);
 		while(temp != NULL)
 		{
 			if(temp->pos < game->cut_point)
-				return (0); // todos elem da stack são maiores que cut_point
+				return (0);
 			temp = temp->next;
 		}
 		
@@ -31,11 +30,10 @@ static int	check_pos(t_game *game, char c)
 	if (c == 'b')
 	{
 		temp = game->stack_b;
-//		printf("check_pos top pos %d * cut point %d\n", temp->pos, game->cut_point);
 		while(temp != NULL)
 		{
 			if(temp->pos > game->cut_point)
-				return (0); // todos elem da stack são maiores que cut_point
+				return (0);
 			temp = temp->next;
 		}
 		
@@ -54,7 +52,7 @@ static void	run_a(t_game *game)
 		if(DEBUG != 0)
 			print_stack(game);
 	}
-	printf("\n######### finish run_a #########\n");
+//	printf("\n######### finish run_a #########\n");
 	game->top_a->cut_point = 1;
 }
 
@@ -75,7 +73,7 @@ static void	run_b_1(t_game *game)
 		if(DEBUG != 0)
 			print_stack(game);
 	}
-	printf("\n#####################3######### finish run_b1 #########\n");
+//	printf("\n#####################3######### finish run_b1 #########\n");
 	game->top_a->cut_point = 1;
 }
 
@@ -134,7 +132,7 @@ static void	to_a(t_game *game)
 		cmd_ra(game, 1);
 	if(DEBUG != 0)
 			print_stack(game);
-	printf("\n######### finish to_a #########\n");
+//	printf("\n######### finish to_a #########\n");
 }
 
 static void	to_b(t_game *game)
@@ -154,7 +152,7 @@ static void	to_b(t_game *game)
 		if(DEBUG != 0)
 			print_stack(game);
 	}
-	printf("\n######### finish to_b #########\n");
+//	printf("\n######### finish to_b #########\n");
 }
 
 static void	cut_point(t_game *game, t_stack *stack)
@@ -211,6 +209,11 @@ int	solution_psF(t_game *game)
 	while (check_stack_a(game) != 1)
 	{
 		to_b(game);
+		if (game->size_b > CUT_POINT)
+		{
+				cut_point(game, game->stack_b);
+				run_b_1(game);
+		}
 		to_a(game);
 	}
 /*	while (i < 5)
