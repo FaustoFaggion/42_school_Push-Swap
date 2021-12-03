@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 18:54:16 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 19:27:42 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,9 @@ static void	run_b_1(t_game *game)
 			cmd_pa(game);
 			cmd_ra(game, 1);
 		}
-		else if (game->top_a->pos == game->botton_a->pos + 1)
-			cmd_ra(game, 1);
-		else if (game->top_b->pos >= game->cut_point)
+		if (game->top_b->pos >= game->cut_point)
 			cmd_pa(game);
-		else if (game->top_b->pos < game->cut_point)
+		else
 			cmd_rb(game, 1);
 		if(DEBUG != 0)
 			print_stack(game);
@@ -191,13 +189,12 @@ int	solution_psF(t_game *game)
 	i = 0;
 	cut_point(game, game->stack_a);
 	run_a(game);
-	while (game->size_b > 0)
+	while (game->size_b > 1)
 	{
-		game->cut_point = game->size_b - (game->size_b / 2);
+		cut_point(game, game->stack_b);
 		run_b_1(game);
-		i++;
 	}
-/*	while (i < 5)
+/*	while (i < 3)
 	{
 		to_b(game);
 		to_a(game);
