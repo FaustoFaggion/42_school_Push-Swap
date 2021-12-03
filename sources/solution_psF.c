@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 19:34:14 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 20:17:29 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,11 +182,25 @@ static void	cut_point(t_game *game, t_stack *stack)
 	
 }
 
+static	int	check_stack_a(t_game *game)
+{
+	t_stack *temp;
+	t_stack *temp_next;
+	
+	temp = game->stack_a;
+	temp_next = game->stack_a->next;
+	while (temp->next != NULL)
+	{
+		if (temp->pos != (temp_next->pos - 1))
+			return (0);
+		temp = temp_next;
+		temp_next = temp_next->next;
+	}
+	return (1);
+}
+
 int	solution_psF(t_game *game)
 {
-	int i;
-
-	i = 0;
 	cut_point(game, game->stack_a);
 	run_a(game);
 	while (game->size_b > 1)
@@ -194,11 +208,10 @@ int	solution_psF(t_game *game)
 		cut_point(game, game->stack_b);
 		run_b_1(game);
 	}
-	while (i < 6)
+	while (check_stack_a(game) != 1)
 	{
 		to_b(game);
 		to_a(game);
-		i++;
 	}
 /*	while (i < 5)
 	{
