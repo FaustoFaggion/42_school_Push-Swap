@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:22:39 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/30 13:37:07 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 09:58:33 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 int	main(int argc, char *argv[])
 {
 	t_game	game;
-
+	
 	if (init_ps(argc, argv, &game) == 1 || init_stack(&game, argc) == 1)
 	{
 		exit_ps(&game);
 		return (0);
 	}
-	solution_psE(&game);
+
+	solution_psF(&game);
 	exit_ps(&game);
-	return (0);	
+	return (0);
 }

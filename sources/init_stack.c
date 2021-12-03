@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/30 12:31:13 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:57:16 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static t_stack	*ps_lstnew(int *content)
 	n_elem = (t_stack *)malloc(sizeof(t_stack));
 	if (!n_elem)
 		return (NULL);
-	n_elem->content = content;
+	n_elem->content = *content;
 	n_elem->previous = NULL;
 	n_elem->next = NULL;
-	n_elem->pos = NULL;
+	n_elem->pos = 0;
 	n_elem->cut_point = 0;
 	return (n_elem);
 }
@@ -61,11 +61,11 @@ static void	check_pos(t_game *game, t_stack *temp)
 	x = 0;
 	while (i < game->size)
 	{
-		if (game->args[i] <= *temp->content)
+		if (game->args[i] <= temp->content)
 			x++;
 		i++;
 	}
-	temp->pos = &game->sequence[x- 1];
+	temp->pos = x;
 }
 
 int	init_stack(t_game *game, int argc)

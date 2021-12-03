@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/30 12:30:41 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:55:42 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ static int	init_variables(int argc, t_game *game)
 	game->args = malloc(sizeof(int) * (argc - 1));
 	if (game->args == NULL)
 		return (1);
-	game->sequence = malloc(sizeof(int) * (argc - 1));
-	if (game->sequence == NULL)
-		return (1);
 	game->stack_a = NULL;
 	game->top_a = NULL;
 	game->next_a = NULL;
@@ -70,13 +67,11 @@ static int	parse_args(int argc, char *argv[], t_game *game)
 			write(2, "Number > INT_MAX or < INT_MIN\n", 30);
 			return (1);
 		}
-		game->sequence[i - 1] = i;
 		i++;
 	}
 	game->size = i - 1;
 	game->size_a = game->size;
 	game->size_b = 0;
-	game->median = (game->size + 1) / 2;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:23:12 by fausto            #+#    #+#             */
-/*   Updated: 2021/11/25 18:06:50 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/02 16:57:37 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,5 @@ int	exit_ps(t_game *game)
 //	free_size(game->size_a);
 //	free_size(game->size_b);
 	free_array(game->args);
-	free_array(game->sequence);
 	return (0);
 }
