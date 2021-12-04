@@ -6,11 +6,36 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 20:32:03 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/03 21:04:27 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	cut_point(t_game *game, t_stack *stack)
+{
+	t_stack *temp;
+
+	temp = stack;
+	
+	game->major = 0;
+	while (temp != NULL)
+	{
+		if (temp->pos > game->major)
+			game->major = temp->pos;
+		temp = temp->next;
+	}
+	temp = stack;
+	game->minor = game->major;
+	while (temp != NULL)
+	{
+		if (temp->pos < game->minor)
+			game->minor = temp->pos;
+		temp = temp->next;
+	}
+	game->cut_point = game->minor + ((game->major - game->minor) / 2);
+	
+}
 
 static int	check_pos(t_game *game, char c)
 {
@@ -76,7 +101,7 @@ static void	run_b_1(t_game *game)
 //	printf("\n#####################3######### finish run_b1 #########\n");
 	game->top_a->cut_point = 1;
 }
-
+/*
 static int	check_major(t_game *game)
 {
 	t_stack *temp;
@@ -96,14 +121,29 @@ static int	check_major(t_game *game)
 	return (int_max); 
 }
 
+static void	check_major_pos(t_game *game, int major)
+{
+	t_stack *temp;
+	int	i;
+
+	i = 0;
+	temp = game->stack_b;
+	while (temp != NULL)
+	{
+		if (temp->content == major)
+			brreak ;
+		i++;
+	}
+	if ()
+}
+*/
 static void	to_a(t_game *game)
 {
-	int	major;
 
 	while (game->next_b != NULL)
 	{
-		major = check_major(game);
-		while(game->top_b->content != major)
+		cut_point(game, game->stack_b);
+		while(game->top_b->pos != game->major)
 		{
 			if (game->top_b->pos == game->botton_a->pos + 1)
 			{
@@ -153,31 +193,6 @@ static void	to_b(t_game *game)
 			print_stack(game);
 	}
 //	printf("\n######### finish to_b #########\n");
-}
-
-static void	cut_point(t_game *game, t_stack *stack)
-{
-	t_stack *temp;
-
-	temp = stack;
-	
-	game->major = 0;
-	while (temp != NULL)
-	{
-		if (temp->pos > game->major)
-			game->major = temp->pos;
-		temp = temp->next;
-	}
-	temp = stack;
-	game->minor = game->major;
-	while (temp != NULL)
-	{
-		if (temp->pos < game->minor)
-			game->minor = temp->pos;
-		temp = temp->next;
-	}
-	game->cut_point = game->minor + ((game->major - game->minor) / 2);
-	
 }
 
 static	int	check_stack_a(t_game *game)
