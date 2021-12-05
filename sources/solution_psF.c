@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/05 19:05:43 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/05 19:13:02 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,11 +165,17 @@ static void	to_a(t_game *game)
 			if (minor < (game->size_b - major))
 			{
 				while(game->top_b->pos != game->minor)
+				{
+					if (game->top_b->pos == minor + 1)
+						cmd_pa(game);
 					cmd_rb(game, 1);
+				}
 				if(DEBUG != 0)
 					print_stack(game);
 				cmd_pa(game);
 				cmd_ra(game, 1);
+				if (game->top_a->pos == minor + 1)
+					cmd_ra(game, 1);
 			}
 			else
 			{
@@ -193,9 +199,15 @@ static void	to_a(t_game *game)
 			else
 			{
 				while(game->top_b->pos != game->minor)
+				{
+					if (game->top_b->pos == minor + 1)
+						cmd_pa(game);
 					cmd_rrb(game, 1);
+				}	
 				cmd_pa(game);
 				cmd_ra(game, 1);
+				if (game->top_a->pos == minor + 1)
+					cmd_ra(game, 1);
 				if(DEBUG != 0)
 					print_stack(game);
 			}
