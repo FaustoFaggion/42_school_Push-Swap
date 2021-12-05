@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/05 18:16:19 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/05 19:05:43 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,59 +141,66 @@ static void	to_a(t_game *game)
 {
 	t_stack	*temp;
 	int		minor;
+	int		major;
 
 	while (game->next_b != NULL)
 	{
-		
 		cut_point(game, game->stack_b);
 		minor = 0;
 		temp = game->stack_b;
-			while (temp->pos != game->minor)
-			{
-				minor++;
-				temp = temp->next;
-			}
-		if (minor < (game->size_b - minor))
+		while (temp->pos != game->minor)
 		{
-			while(game->top_b->pos != game->minor)
+			minor++;
+			temp = temp->next;
+		}
+		major = 0;
+		temp = game->stack_b;
+		while (temp->pos != game->major)
+		{
+			major++;
+			temp = temp->next;
+		}
+		if (minor < major)
+		{
+			if (minor < (game->size_b - major))
 			{
-				if (game->top_b->pos == game->major)
-				{
-					cmd_pa(game);
-				}
-				else if (game->top_b->pos == game->top_a->pos - 1)
-				{
-					cmd_pa(game);
-				}
-				else
+				while(game->top_b->pos != game->minor)
 					cmd_rb(game, 1);
 				if(DEBUG != 0)
 					print_stack(game);
+				cmd_pa(game);
+				cmd_ra(game, 1);
 			}
-			cmd_pa(game);
-			cmd_ra(game, 1);
-		}
-		else
-		{
-			while(game->top_b->pos != game->minor)
+			else
 			{
-				if (game->top_b->pos == game->major)
-				{
-					cmd_pa(game);
-				}
-				else if (game->top_b->pos == game->top_a->pos - 1)
-				{
-					cmd_pa(game);
-				}
-				else
+				while(game->top_b->pos != game->major)
 					cmd_rrb(game, 1);
+				cmd_pa(game);
 				if(DEBUG != 0)
 					print_stack(game);
 			}
-			cmd_pa(game);
-			cmd_ra(game, 1);
 		}
-		if(DEBUG != 0)
+		else
+		{
+			if (major < (game->size_b - minor))
+			{
+				while(game->top_b->pos != game->major)
+					cmd_rb(game, 1);
+				cmd_pa(game);
+				if(DEBUG != 0)
+					print_stack(game);
+			}
+			else
+			{
+				while(game->top_b->pos != game->minor)
+					cmd_rrb(game, 1);
+				cmd_pa(game);
+				cmd_ra(game, 1);
+				if(DEBUG != 0)
+					print_stack(game);
+			}
+		}
+		if (DEBUG != 0)
 			print_stack(game);
 	}
 	if (game->top_b->pos == game->botton_a->pos + 1)
