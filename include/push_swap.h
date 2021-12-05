@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/05 12:06:47 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/05 17:25:43 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 
 # define DEBUG 0
-# define CUT_POINT 35
+# define CUT_POINT 26
 
 typedef struct s_stack
 {
