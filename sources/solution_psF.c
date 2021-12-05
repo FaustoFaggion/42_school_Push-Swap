@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/03 21:04:27 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/05 12:12:14 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,51 +92,27 @@ static void	run_b_1(t_game *game)
 			cmd_ra(game, 1);
 		}
 		if (game->top_b->pos >= game->cut_point)
-			cmd_pa(game);
+		{
+				cmd_pa(game);
+		}
 		else
+		{
+			if (game->top_b->pos == game->botton_a->pos + 1)	
+			{
+				cmd_pa(game);
+				cmd_ra(game, 1);
+			}
+			else
 			cmd_rb(game, 1);
+		}
 		if(DEBUG != 0)
 			print_stack(game);
 	}
 //	printf("\n#####################3######### finish run_b1 #########\n");
 	game->top_a->cut_point = 1;
 }
-/*
-static int	check_major(t_game *game)
-{
-	t_stack *temp;
-	int	int_max;
-	
-	temp = game->top_b;
-	int_max = game->top_b->content;
-	if (game->top_b->next != NULL)
-	{
-		while(temp)
-		{
-			if(temp->content > int_max)
-				int_max = temp->content;
-			temp = temp->next;
-		}
-	}
-	return (int_max); 
-}
 
-static void	check_major_pos(t_game *game, int major)
-{
-	t_stack *temp;
-	int	i;
 
-	i = 0;
-	temp = game->stack_b;
-	while (temp != NULL)
-	{
-		if (temp->content == major)
-			brreak ;
-		i++;
-	}
-	if ()
-}
-*/
 static void	to_a(t_game *game)
 {
 
@@ -172,7 +148,7 @@ static void	to_a(t_game *game)
 		cmd_ra(game, 1);
 	if(DEBUG != 0)
 			print_stack(game);
-//	printf("\n######### finish to_a #########\n");
+	printf("\n######### finish to_a #########\n");
 }
 
 static void	to_b(t_game *game)
@@ -232,4 +208,94 @@ int	solution_psF(t_game *game)
 		to_a(game);
 	}	
 	return(0);
-}	
+}
+
+
+
+
+
+/*
+static void	to_a_1(t_game *game)
+{
+	t_stack *temp;
+	int	major;
+	int	minor;
+
+
+	while (game->stack_b != NULL)
+	{
+		
+		major = 0;
+		minor = 0;
+		cut_point(game, game->stack_b);
+		temp = game->stack_b;
+		if (temp->pos == game->botton_a->pos + 1)
+		{
+			cmd_pa(game);
+			cmd_ra(game, 1);
+		}
+		else if (temp->pos == game->top_a->pos - 1)
+			cmd_pa(game);
+		else if (temp->next != NULL)
+		{
+			while (temp->pos != game->major)
+			{
+				major++;
+				temp = temp->next;
+			}
+			temp = game->stack_b;
+			while (temp->pos != game->minor)
+			{
+				minor++;
+				temp = temp->next;
+			}
+			if (game->top_b->pos == major)
+				cmd_pa(game);
+			if (game->top_b->pos == minor)
+			{
+				cmd_pa(game);
+				cmd_ra(game, 1);
+			}	
+			if (major > minor)
+			{
+				if ((major - game->size_b) < minor)
+				{
+					while(game->top_b->pos != game->major )
+						cmd_rrb(game, 1);
+					cmd_pa(game);
+				}
+				else
+				{
+					while (game->top_b->pos != game->minor)
+						cmd_rb(game, 1);
+					cmd_pa(game);
+					cmd_ra(game, 1);
+				}
+			}
+			else
+			{
+				if ((minor - game->size_b) < major)
+				{
+					while(game->top_b->pos != game->minor)
+						cmd_rrb(game, 1);
+					cmd_pa(game);
+					cmd_ra(game, 1);
+				}
+				else
+				{
+					while (game->top_b->pos != game->major)
+						cmd_rb(game, 1);
+					cmd_pa(game);
+				}
+			}
+			if (game->top_a->pos == game->botton_a->pos + 1)
+				cmd_ra(game, 1);
+		}
+		if(DEBUG != 0)
+			print_stack(game);
+	}
+	while (game->top_a->pos == game->botton_a->pos + 1)
+		cmd_ra(game, 1);
+	printf("finish to_a_1\n");
+}
+*/

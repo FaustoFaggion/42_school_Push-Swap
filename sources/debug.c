@@ -5,6 +5,8 @@ void	print_stack(t_game *game)
 	t_stack	*temp_a;
 	t_stack	*temp_b;
 
+	printf("major %d * ", game->major);
+	printf("minor %d\n", game->minor);
 	printf("size %d\n", game->size);
 	printf("size_a %d\n", game->size_a);
 	printf("size_b %d\n", game->size_b);
