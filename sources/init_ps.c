@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/02 16:55:42 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/05 19:35:21 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ static int	check_dup(t_game *game, int argc)
 
 int	init_ps(int argc, char *argv[], t_game *game)
 {
-	if (check_arguments(argc, argv) == 1)
-		return (1);
 	if (init_variables(argc, game) == 1)
+		return (1);
+	if (check_arguments(argc, argv) == 1)
 		return (1);
 	if (parse_args(argc, argv, game) == 1)
 		return (1);
