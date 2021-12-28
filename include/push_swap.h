@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/28 17:05:22 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 18:12:19 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		cmd_rr(t_game *game);
 
 int		cmd_rrr(t_game *game);
 
-int		solution_psG(t_game *t_game);
+int		solution_psH(t_game *t_game);
 
 void	debug(t_game *game);
 
@@ -88,6 +88,15 @@ void	print_stack(t_game *game);
 
 long long	ps_atoll(const char *ptr);
 
-//void	check_top_pos(t_game *game);
+void	run_a(t_game *game);
+
+void	run_b(t_game *game);
+
+void	cut_point(t_game *game, t_stack *stack);
+
+int	check_pos(t_game *game, char c);
+
+int	check_stack_a(t_game *game);
+
 
 #endif

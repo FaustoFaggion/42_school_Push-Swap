@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/28 13:33:37 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 17:43:26 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_stack	*ps_lstnew(int *content)
 	return (n_elem);
 }
 
-static void	check_pos(t_game *game, t_stack *temp)
+static void	check_pos_(t_game *game, t_stack *temp)
 {
 	int	i;
 	int	x;
@@ -82,7 +82,7 @@ int	init_stack(t_game *game, int argc)
 		temp = ps_lstnew(&game->args[i]);
 		if (temp == NULL)
 			return (1);
-		check_pos(game, temp);
+		check_pos_(game, temp);
 		ps_lstadd_back(&game->stack_a, temp);
 		i++;
 	}
