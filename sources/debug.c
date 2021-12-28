@@ -5,8 +5,8 @@ void	print_stack(t_game *game)
 	t_stack	*temp_a;
 	t_stack	*temp_b;
 
-	printf("major %d * ", game->major);
-	printf("minor %d\n", game->minor);
+	printf("game->major %d * ", game->major);
+	printf("game->minor %d\n", game->minor);
 	printf("size %d\n", game->size);
 	printf("size_a %d\n", game->size_a);
 	printf("size_b %d\n", game->size_b);
@@ -17,9 +17,10 @@ void	print_stack(t_game *game)
 	if (game->stack_a != NULL)
 	{
 		printf("top_a pos %d\n", game->top_a->pos);
-		printf("next_a pos %d\n", game->next_a->pos);
 		printf("botton_a pos %d\n", game->botton_a->pos);
 		printf("cut_point_a %d\n", game->top_a->cut_point);
+		if (game->stack_a->next != NULL)
+			printf("next_a pos %d\n", game->next_a->pos);
 	}
 	if (game->stack_b != NULL && game->stack_b->next != NULL)
 	{
@@ -45,7 +46,7 @@ void	print_stack(t_game *game)
 		temp_b = temp_b->next;
 	}
 	printf("\n");
-	temp_a = game->stack_a;
+/*	temp_a = game->stack_a;
 	while (temp_a != NULL)
 	{
 		printf("content %d * pos %d * ", temp_a->content, temp_a->pos);
@@ -61,4 +62,4 @@ void	print_stack(t_game *game)
 	}
 
 	printf("\n");
-}
+*/}

@@ -1,3 +1,8 @@
 rodar o checker
 
 ARG="2 1 0"; ./push_swap $ARG | ./checker_OS $ARG"
+
+make re && valgrind --leak-check=full --show-leak-kinds=all ./push_swap $(seq -50 49 | shuf | tr '\n' ' ')
+
+make re && valgrind --leak-check=full --show-leak-kinds=all ./push_swap $(seq -50 49 | shuf | tr '\n' ' ')
+

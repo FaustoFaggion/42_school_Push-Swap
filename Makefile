@@ -19,7 +19,8 @@ SRC_FILES		=	push_swap.c \
 					cmd_stack_a.c \
 					cmd_stack_b.c \
 					cmd_stack_dup.c \
-					solution_psF.c \
+					solution_psG.c \
+					ps_atoll.c \
 					#solution_stack_a.c \
 
 SRC				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
@@ -93,7 +94,7 @@ run3:
 
 valgrind:
 	make re
-	valgrind ./push_swap 18 3 7 4 12 9 10 6 16 1 0 13 5 11 17 2 14 19 8 15
+	valgrind --leak-check=full --show-leak-kinds=all ./push_swap $(seq -50 49 | shuf | tr '\n' ' ')
 
 #valgrind_bonus: $(NAME_BONUS)
 #	valgrind --leak-check=full --show-leak-kinds=all ./pipex file1.txt "tr a b" "tr e c" file2.txt

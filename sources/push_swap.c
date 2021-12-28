@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:22:39 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/03 09:58:33 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 14:12:17 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 
-	solution_psF(&game);
+	solution_psG(&game);
 	exit_ps(&game);
 	return (0);
 }

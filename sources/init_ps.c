@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/05 19:35:21 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 13:35:37 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_arguments(int argc, char *argv[])
 				j++;
 			if (ft_isdigit(argv[i][j]) == 0)
 			{
-				write(2, "Write a non digit argument \n", 28);
+				write(2, "Error\n", 6);
 				return (1);
 			}
 			j++;
@@ -60,13 +60,14 @@ static int	parse_args(int argc, char *argv[], t_game *game)
 	i = 1;
 	while (i < argc)
 	{
-		game->args[i - 1] = ft_atoi(argv[i]);
 		//Verificar corretamente se número é > INT_MAX e < INT_MIN
-		if (game->args[i - 1] > INT_MAX || game->args[i - 1] < INT_MIN)
+		if (ps_atoll(argv[i]) >= INT_MAX || ps_atoll(argv[i]) <= INT_MIN)
 		{
-			write(2, "Number > INT_MAX or < INT_MIN\n", 30);
+			write(2, "Error\n", 6);
 			return (1);
 		}
+		else
+			game->args[i - 1] = ps_atoll(argv[i]);
 		i++;
 	}
 	game->size = i - 1;
@@ -88,7 +89,7 @@ static int	check_dup(t_game *game, int argc)
 		{
 			if (game->args[i] == game->args[j])
 			{	
-				write(2, "Number duplicated - ",20);
+				write(2, "Error\n", 6);
 				return (1);
 			}
 			j++;

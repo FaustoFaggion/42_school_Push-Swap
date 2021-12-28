@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/02 16:57:16 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 13:33:37 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ static void	check_pos(t_game *game, t_stack *temp)
 		i++;
 	}
 	temp->pos = x;
+	if (temp->pos == 1)
+		temp->cut_point = 1;
 }
 
 int	init_stack(t_game *game, int argc)
