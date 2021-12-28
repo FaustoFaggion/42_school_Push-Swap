@@ -11,9 +11,9 @@ void	print_stack(t_game *game)
 	printf("size_a %d\n", game->size_a);
 	printf("size_b %d\n", game->size_b);
 		
-		printf("size_a - size_a /cut_point %d\n", (game->size_a) - (game->size_a / game->cut_point));
-		printf("size_b - size_b /cut_point %d\n", (game->size_b) - (game->size_b / game->cut_point));
-		printf("game_cut_point %d\n", game->cut_point);
+//		printf("size_a - size_a /cut_point %d\n", (game->size_a) - (game->size_a / game->cut_point));
+//		printf("size_b - size_b /cut_point %d\n", (game->size_b) - (game->size_b / game->cut_point));
+//		printf("game_cut_point %d\n", game->cut_point);
 	if (game->stack_a != NULL)
 	{
 		printf("top_a pos %d\n", game->top_a->pos);

@@ -6,36 +6,11 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/28 16:30:26 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 17:12:45 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	cut_point_to_b(t_game *game, t_stack *stack)
-{
-	t_stack *temp;
-
-	temp = stack;
-	
-	game->major = 0;
-	while (temp->cut_point != 1)
-	{
-		if (temp->pos > game->major)
-			game->major = temp->pos;
-		temp = temp->next;
-	}
-	temp = stack;
-	game->minor = game->major;
-	while (temp->cut_point != 1)
-	{
-		if (temp->pos < game->minor)
-			game->minor = temp->pos;
-		temp = temp->next;
-	}
-	game->cut_point = game->minor + ((game->major - game->minor) / 2);
-	
-}
 
 static void	cut_point(t_game *game, t_stack *stack)
 {
@@ -166,13 +141,13 @@ static void	run_b(t_game *game)
 {
 	if(DEBUG != 0)
 		printf("run_b\n");
-	if (game->top_a->pos > game->next_a->pos)
+/*	if (game->top_a->pos > game->next_a->pos)
 	{
 		if(DEBUG != 0)
 			printf("(5)\n");
 		cmd_sa(game, 1);
 	}	
-	while(check_pos(game, 'b') != 1)
+*/	while(check_pos(game, 'b') != 1)
 	{
 		if (game->botton_b->pos == game->botton_a->pos + 1)
 		{
@@ -193,7 +168,7 @@ static void	run_b(t_game *game)
 		}
 */		if (game->top_b->pos == 1)
 		{
-			game->top_b->cut_point = 1;
+//			game->top_b->cut_point = 1;
 			if (check_stack_a(game) != 0)
 			{
 				if(DEBUG != 0)
@@ -374,7 +349,6 @@ static void	to_b(t_game *game)
 		cmd_ra(game, 1);
 	if (game->size_b == 1 && game->top_a->cut_point == 1)
 		cmd_pb(game);
-	cut_point_to_b(game, game->stack_b);
 	while (game->top_a->cut_point != 1)
 	{
 		if (game->top_a->pos != game->botton_a->pos + 1)
