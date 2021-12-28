@@ -6,11 +6,93 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:46:54 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/28 17:48:28 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 19:06:27 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	choose_way(t_game *game)
+{
+	t_stack	*temp;
+
+	game->minor_b = 0;
+	temp = game->stack_b;
+	while (temp->pos != game->minor)
+	{
+		game->minor_b++;
+		temp = temp->next;
+	}
+	game->major_b = 0;
+	temp = game->stack_b;
+	while (temp->pos != game->major)
+	{
+		game->major_b++;
+		temp = temp->next;
+	}
+}
+
+static void	go_minor(t_game *game)
+{
+	if (game->minor_b < (game->size_b - game->major_b))
+	{
+		while (game->top_b->pos != game->minor)
+		{
+			if (game->top_b->pos == game->minor_b + 1)
+				cmd_pa(game);
+			cmd_rb(game, 1);
+		}
+		cmd_pa(game);
+		cmd_ra(game, 1);
+	}
+	else
+	{
+		while (game->top_b->pos != game->major)
+			cmd_rrb(game, 1);
+		cmd_pa(game);
+	}
+}
+
+static void	go_major(t_game *game)
+{
+	if (game->major_b < (game->size_b - game->minor_b))
+	{
+		while (game->top_b->pos != game->major)
+			cmd_rb(game, 1);
+		cmd_pa(game);
+	}
+	else
+	{
+		while (game->top_b->pos != game->minor)
+		{
+			if (game->top_b->pos == game->minor_b + 1)
+				cmd_pa(game);
+			cmd_rrb(game, 1);
+		}
+		cmd_pa(game);
+		cmd_ra(game, 1);
+		if (game->top_a->pos == game->minor_b + 1)
+			cmd_ra(game, 1);
+	}
+}
+
+void	to_a(t_game *game)
+{
+	if (game->stack_b == NULL)
+		return ;
+	while (game->next_b != NULL)
+	{
+		cut_point(game, game->stack_b);
+		choose_way(game);
+		if (game->minor_b < game->major_b)
+			go_minor(game);
+		else
+			go_major(game);
+	}
+	cmd_pa(game);
+	while (game->top_a->pos == game->botton_a->pos + 1)
+		cmd_ra(game, 1);
+}
 
 void	run_a(t_game *game)
 {

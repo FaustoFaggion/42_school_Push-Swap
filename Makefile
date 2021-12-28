@@ -15,15 +15,15 @@ SRC_FILES		=	push_swap.c \
 					init_ps.c \
 					init_stack.c \
 					exit_ps.c \
-					debug.c \
 					cmd_stack_a.c \
 					cmd_stack_b.c \
 					cmd_stack_dup.c \
-					solution_psH.c \
+					solution_ps.c \
 					ps_atoll.c \
 					run_a.c \
 					run_b.c \
 					check.c \
+					#debug.c \
 
 SRC				=	$(addprefix $(SRC_DIR)/, $(SRC_FILES))
 

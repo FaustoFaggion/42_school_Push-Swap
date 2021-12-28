@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:17:28 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/28 17:43:26 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 19:30:01 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	check_pos_(t_game *game, t_stack *temp)
 {
 	int	i;
 	int	x;
-	
+
 	i = 0;
 	x = 0;
 	while (i < game->size)
@@ -73,8 +73,7 @@ static void	check_pos_(t_game *game, t_stack *temp)
 int	init_stack(t_game *game, int argc)
 {
 	t_stack	*temp;
-
-	int	i;
+	int		i;
 
 	i = 0;
 	while (i < argc - 1)

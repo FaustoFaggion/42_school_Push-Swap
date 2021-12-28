@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:24:41 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/28 13:35:37 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 19:29:28 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static int	parse_args(int argc, char *argv[], t_game *game)
 	i = 1;
 	while (i < argc)
 	{
-		//Verificar corretamente se número é > INT_MAX e < INT_MIN
 		if (ps_atoll(argv[i]) >= INT_MAX || ps_atoll(argv[i]) <= INT_MIN)
 		{
 			write(2, "Error\n", 6);

@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/28 18:12:19 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/28 19:48:40 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,55 +48,60 @@ typedef struct s_game
 	t_stack	*next_b;
 	t_stack	*botton_b;
 	int		size_b;
+	int		minor_b;
+	int		major_b;
 }		t_game;
 
-int		init_ps(int argc, char *argv[], t_game *game);
+int			init_ps(int argc, char *argv[], t_game *game);
 
-int		init_stack(t_game *game, int argc);
+int			init_stack(t_game *game, int argc);
 
-t_stack	*ps_lstlast(t_stack *stack);
+t_stack		*ps_lstlast(t_stack *stack);
 
-int		exit_ps(t_game *game);
+int			exit_ps(t_game *game);
 
-int		cmd_sa(t_game *game, int i);
+int			cmd_sa(t_game *game, int i);
 
-int		cmd_ra(t_game *game, int i);
+int			cmd_ra(t_game *game, int i);
 
-int		cmd_rra(t_game *game, int i);
+int			cmd_rra(t_game *game, int i);
 
-int		cmd_pb(t_game *game);
+int			cmd_pb(t_game *game);
 
-int		cmd_sb(t_game *game, int i);
+int			cmd_sb(t_game *game, int i);
 
-int		cmd_rb(t_game *game, int i);
+int			cmd_rb(t_game *game, int i);
 
-int		cmd_rrb(t_game *game, int i);
+int			cmd_rrb(t_game *game, int i);
 
-int		cmd_pa(t_game *game);
+int			cmd_pa(t_game *game);
 
-int		cmd_ss(t_game *game);
+int			cmd_ss(t_game *game);
 
-int		cmd_rr(t_game *game);
+int			cmd_rr(t_game *game);
 
-int		cmd_rrr(t_game *game);
+int			cmd_rrr(t_game *game);
 
-int		solution_psH(t_game *t_game);
+int			solution_ps(t_game *t_game);
 
-void	debug(t_game *game);
+void		debug(t_game *game);
 
-void	print_stack(t_game *game);
+void		print_stack(t_game *game);
 
 long long	ps_atoll(const char *ptr);
 
-void	run_a(t_game *game);
+void		run_a(t_game *game);
 
-void	run_b(t_game *game);
+void		to_a(t_game *game);
 
-void	cut_point(t_game *game, t_stack *stack);
+void		run_b(t_game *game);
 
-int	check_pos(t_game *game, char c);
+void		to_b(t_game *game);
 
-int	check_stack_a(t_game *game);
+void		cut_point(t_game *game, t_stack *stack);
 
+int			check_pos(t_game *game, char c);
+
+int			check_stack_a(t_game *game);
 
 #endif
