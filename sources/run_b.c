@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 19:08:34 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/29 10:56:24 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/29 13:23:21 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 static void	pos_1(t_game *game)
 {
 	if (check_stack_a(game) != 0)
-		cmd_pa(game);
+		cmd(game, "pa");
 	else
 	{
-		cmd_pa(game);
-		cmd_ra(game, 1);
+		cmd(game, "pa");
+		cmd(game, "ra");
 	}
 }
 
@@ -32,20 +32,20 @@ void	run_b(t_game *game)
 	{
 		if (game->botton_b->pos == game->botton_a->pos + 1
 			|| game->botton_b->pos == 1)
-			cmd_rrb(game, 1);
+			cmd(game, "rrb");
 		if (game->top_b->pos == 1)
 			pos_1(game);
 		else if (game->top_b->pos >= game->cut_point)
-			cmd_pa(game);
+			cmd(game, "pa");
 		else
 		{
 			if (game->top_b->pos == game->botton_a->pos + 1)
 			{
-				cmd_pa(game);
-				cmd_ra(game, 1);
+				cmd(game, "pa");
+				cmd(game, "ra");
 			}
 			else
-				cmd_rb(game, 1);
+				cmd(game, "rb");
 		}
 	}
 	game->top_a->cut_point = 1;
@@ -57,16 +57,16 @@ void	run_b(t_game *game)
 void	to_b(t_game *game)
 {
 	if (game->top_a->pos != game->botton_a->pos + 1)
-		cmd_pb(game);
+		cmd(game, "pb");
 	else
-		cmd_ra(game, 1);
+		cmd(game, "ra");
 	if (game->size_b == 1 && game->top_a->cut_point == 1)
-		cmd_pb(game);
+		cmd(game, "pb");
 	while (game->top_a->cut_point != 1)
 	{
 		if (game->top_a->pos != game->botton_a->pos + 1)
-			cmd_pb(game);
+			cmd(game, "pb");
 		else
-			cmd_ra(game, 1);
+			cmd(game, "ra");
 	}
 }

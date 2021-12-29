@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/29 11:19:18 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/29 13:58:14 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 
 # define DEBUG 0
-# define CUT_POINT 30
+# define CUT_POINT 32
 # define INT_MIN 		-2147483648
 # define INT_MAX 		2147483647
 

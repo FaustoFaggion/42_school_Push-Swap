@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/29 11:19:36 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/29 13:24:34 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 static void	run_3(t_game *game)
 {
 	if (game->top_a->pos > game->next_a->pos)
-		cmd_sa(game, 1);
+		cmd(game, "sa");
 	while (game->botton_a->pos < game->top_a->pos)
-		cmd_rra(game, 1);
+		cmd(game, "rra");
 	if (check_stack_a(game) != 0)
 		return ;
-	cmd_rra(game, 1);
-	cmd_sa(game, 1);
+	cmd(game, "rra");
+	cmd(game, "sa");
 }
 
 // Function used when there are 4 or 5 numbers to sort.
@@ -31,15 +31,15 @@ static void	run_5(t_game *game)
 	while (game->size_a != 3)
 	{
 		if (game->top_a->pos <= 2)
-			cmd_pb(game);
+			cmd(game, "pb");
 		else
-			cmd_ra(game, 1);
+			cmd(game, "ra");
 	}
 	run_3(game);
 	if (game->top_b->pos < game->next_b->pos)
-		cmd_sb(game, 1);
-	cmd_pa(game);
-	cmd_pa(game);
+		cmd(game, "sb");
+	cmd(game, "pa");
+	cmd(game, "pa");
 }
 
 /*Fuction will keep passing from A to B and B to A, chuncks of numbers divided
