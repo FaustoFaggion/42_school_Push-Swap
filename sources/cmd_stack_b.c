@@ -6,11 +6,33 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:48:42 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/29 10:40:45 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/29 12:21:12 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	fill_game(t_game *game, char cmd[3])
+{
+	if (game->stack_b != NULL)
+	{
+		game->top_b = game->stack_b;
+		game->next_b = game->top_b->next;
+		game->botton_b = ps_lstlast(game->stack_b);
+	}
+	if (game->stack_a != NULL)
+	{
+		game->top_a = game->stack_a;
+		game->next_a = game->stack_a->next;
+		game->botton_a = ps_lstlast(game->stack_a);
+	}
+	if (ft_strncmp(cmd, "pa", 2) == 0)
+	{
+		write(1, "pa\n", 3);
+		game->size_b = game->size_b - 1;
+		game->size_a = game->size_a + 1;
+	}
+}
 
 /*sb : swap b - swap the first 2 elements at the top of stack b.
 		Do nothing if there is only one or no elements).*/
@@ -95,24 +117,6 @@ int	cmd_rrb(t_game *game, int i)
 	return (0);
 }
 
-static void	fill_game(t_game *game)
-{
-	write(1, "pa\n", 3);
-	if (game->stack_b != NULL)
-	{
-		game->top_b = game->stack_b;
-		game->next_b = game->top_b->next;
-		game->botton_b = ps_lstlast(game->stack_b);
-	}
-	if (game->stack_a != NULL)
-	{
-		game->top_a = game->stack_a;
-		game->next_a = game->stack_a->next;
-		game->botton_a = ps_lstlast(game->stack_a);
-	}
-	game->size_b = game->size_b - 1;
-	game->size_a = game->size_a + 1;
-}
 
 /*pa : push a - take the first element at the top of b and put it at
 		the top of a. Do nothing if b is empty.*/
@@ -141,6 +145,6 @@ int	cmd_pa(t_game *game)
 	game->stack_a->previous = NULL;
 	if (temp != NULL)
 		temp->previous = game->stack_a;
-	fill_game(game);
+	fill_game(game, "pa");
 	return (0);
 }
