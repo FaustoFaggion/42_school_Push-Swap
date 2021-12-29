@@ -6,12 +6,13 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/28 19:33:21 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/29 11:19:36 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Function used when there are 2 or 3 numbers to sort.
 static void	run_3(t_game *game)
 {
 	if (game->top_a->pos > game->next_a->pos)
@@ -24,6 +25,7 @@ static void	run_3(t_game *game)
 	cmd_sa(game, 1);
 }
 
+// Function used when there are 4 or 5 numbers to sort.
 static void	run_5(t_game *game)
 {
 	while (game->size_a != 3)
@@ -40,6 +42,8 @@ static void	run_5(t_game *game)
 	cmd_pa(game);
 }
 
+/*Fuction will keep passing from A to B and B to A, chuncks of numbers divided
+ by a median point */
 static void	to_b_to_a(t_game *game)
 {
 	to_b(game);

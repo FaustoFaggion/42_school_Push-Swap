@@ -6,12 +6,14 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:41:09 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/28 17:46:28 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/29 10:21:36 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*	Function discover the biggest and smallest numbers, then take the median
+	point */
 void	cut_point(t_game *game, t_stack *stack)
 {
 	t_stack	*temp;
@@ -35,6 +37,8 @@ void	cut_point(t_game *game, t_stack *stack)
 	game->cut_point = game->minor + ((game->major - game->minor) / 2);
 }
 
+/*	Function check if there is any number on the stack with a position smaller
+	than cut_point */
 int	check_pos(t_game *game, char c)
 {
 	t_stack	*temp;
@@ -62,6 +66,7 @@ int	check_pos(t_game *game, char c)
 	return (1);
 }
 
+/* Function verify if the stack A is ordered */
 int	check_stack_a(t_game *game)
 {
 	t_stack	*temp;

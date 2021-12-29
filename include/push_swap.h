@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 12:25:09 by fausto            #+#    #+#             */
-/*   Updated: 2021/12/28 19:48:40 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/29 11:19:18 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ int			init_stack(t_game *game, int argc);
 t_stack		*ps_lstlast(t_stack *stack);
 
 int			exit_ps(t_game *game);
+
+void		cmd(t_game *game, char cmd[3]);
 
 int			cmd_sa(t_game *game, int i);
 
