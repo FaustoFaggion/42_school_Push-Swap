@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 19:31:53 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/29 13:24:34 by fagiusep         ###   ########.fr       */
+/*   Updated: 2021/12/31 11:51:15 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	run_5(t_game *game)
 static void	to_b_to_a(t_game *game)
 {
 	to_b(game);
-	if (game->size_b > CUT_POINT)
+	while (game->size_b > CUT_POINT)
 	{
 		cut_point(game, game->stack_b);
 		run_b(game);
