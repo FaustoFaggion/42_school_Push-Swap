@@ -15,6 +15,7 @@ SRC_FILES		=	push_swap.c \
 					init_ps.c \
 					init_stack.c \
 					exit_ps.c \
+					cmd_stack.c \
 					cmd_stack_a.c \
 					cmd_stack_b.c \
 					cmd_stack_dup.c \

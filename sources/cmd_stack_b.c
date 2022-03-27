@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:48:42 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/29 12:21:12 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/03/27 09:09:45 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ int	cmd_rrb(t_game *game, int i)
 	game->botton_b = ps_lstlast(game->stack_b);
 	return (0);
 }
-
 
 /*pa : push a - take the first element at the top of b and put it at
 		the top of a. Do nothing if b is empty.*/

@@ -6,7 +6,7 @@
 /*   By: fagiusep <fagiusep@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 17:46:54 by fagiusep          #+#    #+#             */
-/*   Updated: 2021/12/29 14:06:01 by fagiusep         ###   ########.fr       */
+/*   Updated: 2022/03/27 09:10:30 by fagiusep         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	run_a(t_game *game)
 		{
 			if (game->stack_b != NULL)
 			{
-				if (game->top_b->pos < (game->cut_point / 2) 
+				if (game->top_b->pos < (game->cut_point / 2)
 					&& game->top_b->pos != 1)
 					cmd_rr(game);
 				else
