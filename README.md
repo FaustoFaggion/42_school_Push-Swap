@@ -24,6 +24,11 @@ Instructions: <br>
 > <li>pp - runs pa and pb instructions at the same time</li>
 > </ul>
 
+## The Algorithm
+
+
+![FLUXOGRAMA](./fluxograma.png "Fluxograma")
+
 ## How to Use
 
 > Clone the repository: `https://github.com/FaustoFaggion/42_school_Push-Swap.git`
